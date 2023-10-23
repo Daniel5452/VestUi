@@ -28,15 +28,15 @@
         app:layout_constraintTop_toBottomOf="@id/vestSettingsTitle" />
 
     <!-- Compression Button -->
-<!--    <Button-->
-<!--        android:id="@+id/bluetoothButton"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Bluetooth Connection"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/bluetoothStatus" />-->
+    <Button
+        android:id="@+id/bluetoothButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bluetooth Connection"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bluetoothStatus" />
 
     <!-- Automatic Compression Button -->
     <Button
@@ -47,7 +47,7 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/bluetoothStatus" />
+        app:layout_constraintTop_toBottomOf="@id/bluetoothButton" />
 
     <!-- Manual Compression Title -->
     <TextView
