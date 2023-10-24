@@ -17,10 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-
         startBLEScanning()
-
     }
 
     @SuppressLint("MissingPermission")
@@ -29,28 +26,28 @@ class MainActivity : AppCompatActivity() {
 
         ble.verifyPermissionsAsync(
             rationaleRequestCallback = { next ->
-                // Include your code to show an Alert or UI explaining why the permissions are required
-                // Calling the function bellow if the user agrees to give the permissions
+                // Improvement: show an Alert or UI explaining why the permissions are required
                 next()
             },
             callback = { granted ->
                 if (granted) {
-                    // Continue your code....
+                    // Continue with UI
                 } else {
-                    // Include your code to show an Alert or UI indicating that the permissions are required
+                    // Show an Alert or UI indicating that the permissions are required
                 }
             }
         )
         ble.scanForAsync(
-            // You only need to supply one of these, no need for all of them!
             macAddress = "84:C6:92:87:91:E4",
             //name = "HMSoft",
             service = "0000FFE0-0000-1000-8000-00805F9B34FB",
 
             onFinish = { connection ->
                 if (connection != null) {
-                    // And you can continue with your code
+                    //Test for connection
                     connection.write("0000FFE1-0000-1000-8000-00805F9B34FB", "Testing")
+
+                    //Show UI
                     setContentView(R.layout.lui)
 
                     val compressionSeekBar: SeekBar = findViewById(R.id.compressionLevelSeekBar)
@@ -68,6 +65,7 @@ class MainActivity : AppCompatActivity() {
                             compressionLevelText.text = "Compression Level: $levelDescription"
 
                             val message = progress.toString()
+                            //Transmit compression level
                             connection.write(characteristic = "0000FFE1-0000-1000-8000-00805F9B34FB", message, charset = Charsets.UTF_8)
 
                         }
@@ -83,12 +81,12 @@ class MainActivity : AppCompatActivity() {
 
 
                 } else {
-                    // Show an Alert or UI with your preferred error message about the device not being available
+                    // Improvement: show an Alert or UI with error message about the device not being available
                 }
             },
 
             onError = { errorCode ->
-                // Show an Alert or UI with your preferred error message about the error
+                // Improvement: show an Alert or UI about the error
             }
         )
 
